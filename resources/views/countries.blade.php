@@ -11,8 +11,9 @@
 
 </head>
 <body>
-    <div class="container">
-        <h1>Countries</h1>
+    <div class="container" style="margin: 45px 0; margin-left: auto; margin-right: auto;">
+        <h1 style="text-align: center; margin-bottom: 50px; font-size: 2.6rem">Countries</h1>
+
         <table>
             <thead>
                 <tr>
@@ -39,6 +40,10 @@
 
             </tbody>
         </table>
+
+        <a href="{{ route('home') }}" style="margin-left: 1rem;">
+            <button class="secondary" style="margin:auto; display:block;">QUIT</button>
+        </a>
     </div>
 </body>
 </html>

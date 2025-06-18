@@ -28,7 +28,7 @@
         button.addEventListener("click", () => {
             clearInterval(timer);
 
-            // Nasconde il timer alla risposta
-            document.getElementById("timer").style.display = "none";
+            // // Nasconde il timer alla risposta -> dà un bug
+            // document.getElementById("timer").style.display = "none";
         });
     });

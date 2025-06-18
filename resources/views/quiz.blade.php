@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>GeoQuiz</title>
+    <title>Capitals Quiz</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 
     <style>
@@ -19,9 +20,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>Geo Quiz</h1>
-
-        <h2>What is the capital of {{ $country->name }}?</h2>
+        
+        <h1 style="text-align: center;">Capitals Quiz</h1>
+        <h2 style="text-align: center;">What is the capital of {{ $country->name }}?</h2>
 
         <!-- Timer -->
         <div id="timer" style="font-weight: bold; font-size: 1.2rem; color: orange; margin: 25px 0;">
@@ -62,6 +63,8 @@
             @endforeach
         </form>
 
+        <p style="font-weight: thin; font-size: 0.9rem; text-align: right;">Question {{ $questionNumber }} of 10</p>
+
         @if(!empty($answerChecked))
             <div style="margin-top: 2rem;">
 
@@ -86,6 +89,12 @@
                 <button type="submit">Continue</button>
             </form>
         @endif
+        
+        <a href="{{ route('home') }}" >
+            <button class="secondary" style="margin-top:30px; font-size: 0.9rem; width: 30%">
+                QUIT</button>
+        </a>
+            
     </div>
 
     <!-- end of body -->

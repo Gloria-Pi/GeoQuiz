@@ -7,8 +7,18 @@ use Illuminate\Http\Request;
 
 class CapitalQuizController extends Controller
 {
+
+
     public function showQuestion(Request $request)
     {
+        // Se ha già risposto a 10 domande, fine quiz
+        if (session('question_count', 0) >= 10) {
+            return view('quiz_end', [
+                'score' => session('score', 0),
+                'history' => session('history', [])
+            ]);
+        }
+
         // Genera una nuova domanda SOLO se non c'è risposta
         if (!$request->has('selected')) {
             $country = Country::inRandomOrder()->first();
@@ -28,13 +38,16 @@ class CapitalQuizController extends Controller
             return view('quiz', [
                 'country' => $country,
                 'options' => $options,
-                'answerChecked' => false
+                'answerChecked' => false,
+                'questionNumber' => session('question_count', 0) + 1
             ]);
         }
 
         // Se invece stai postando una risposta (dopo il click su un bottone)
         return $this->checkAnswer($request);
     }
+
+
 
     public function checkAnswer(Request $request)
     {
@@ -54,6 +67,26 @@ class CapitalQuizController extends Controller
             $isCorrect = $selected === $correctCapital;
         }
 
+
+        // Aggiorna il conteggio e punteggio
+        session(['question_count' => session('question_count', 0) + 1]);
+        if ($isCorrect) {
+            session(['score' => session('score', 0) + 1]);
+        }
+
+
+        // Memorizza le risposte in sessione (da usare per la correzione)
+        $history = session('history', []);
+
+        $history[] = [
+            'country' => $country->name,
+            'userAnswer' => $selected ?: 'No answer',
+            'correctAnswer' => $correctCapital,
+            'isCorrect' => $isCorrect
+        ];
+        session(['history' => $history]);
+
+
         // Usa le stesse opzioni inviate nel form
         $options = $request->input('options', []);
     
@@ -64,7 +97,8 @@ class CapitalQuizController extends Controller
             'selected' => $selected,
             'correctCapital' => $correctCapital,
             'isCorrect' => $isCorrect,
-            'timeout' => $timeout
+            'timeout' => $timeout,
+            'questionNumber' => session('question_count', 0)
         ]);
     }
 
