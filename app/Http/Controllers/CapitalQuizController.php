@@ -40,11 +40,20 @@ class CapitalQuizController extends Controller
     {
         $alpha3Code = $request->input('country_code');
         $selected = $request->input('answer');
-    
+        
         $country = Country::where('alpha3Code', $alpha3Code)->firstOrFail();
         $correctCapital = $country->capital;
         $isCorrect = $selected === $correctCapital;
     
+        // Se answer è empty (caso in cui il tempo è scaduto)
+        $timeout = false;
+        if (empty($selected)) {
+            $isCorrect = false;
+            $timeout = true;
+        } else {
+            $isCorrect = $selected === $correctCapital;
+        }
+
         // Usa le stesse opzioni inviate nel form
         $options = $request->input('options', []);
     
@@ -54,7 +63,8 @@ class CapitalQuizController extends Controller
             'answerChecked' => true,
             'selected' => $selected,
             'correctCapital' => $correctCapital,
-            'isCorrect' => $isCorrect
+            'isCorrect' => $isCorrect,
+            'timeout' => $timeout
         ]);
     }
 
