@@ -49,6 +49,9 @@
         <a href="{{ route('home') }}">
             <button class="secondary">QUIT</button>
         </a>
+        <a href="{{ route('highscores') }}">
+            <button class="secondary">View Leaderboard</button>
+        </a>
     </div>
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CapitalQuizController;
 use App\Http\Controllers\CountryController;
+use App\Models\HighScore;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,6 +34,7 @@ Route::post('/quiz/reset', function () {
 })->name('quiz.reset');
 
 // Mostra gli high scores
-Route::get('/highscores', function () {
-    return view('highscores');
+Route::get('/high-scores', function () {
+    $highScores = HighScore::orderByDesc('score')->take(10)->get();
+    return view('high_scores', ['highScores' => $highScores]);
 })->name('highscores');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
+use App\Models\HighScore;
 use Illuminate\Http\Request;
 
 class CapitalQuizController extends Controller
@@ -13,6 +14,16 @@ class CapitalQuizController extends Controller
     {
         // Se ha già risposto a 10 domande, fine quiz
         if (session('question_count', 0) >= 10) {
+    
+            $score = session('score', 0);
+            $playerName = session('player_name', 'Anonymous');
+
+            // Salva il punteggio (nessun controllo se già salvato)
+            HighScore::create([
+                'player_name' => $playerName,
+                'score' => $score
+            ]);
+
             return view('quiz_end', [
                 'score' => session('score', 0),
                 'history' => session('history', [])
