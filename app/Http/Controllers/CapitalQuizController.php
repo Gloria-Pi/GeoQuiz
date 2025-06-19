@@ -12,17 +12,33 @@ class CapitalQuizController extends Controller
 
     public function showQuestion(Request $request)
     {
+
+        // Se il form del nome è stato inviato, salva il nome nella sessione
+        if ($request->has('player_name')) {
+            session([
+                'player_name' => $request->input('player_name'),
+                'score' => 0,
+                'question_count' => 0,
+                'answers' => [],
+                'history' => [],
+                'score_saved' => false
+            ]);
+        }
+
+
         // Se ha già risposto a 10 domande, fine quiz
         if (session('question_count', 0) >= 10) {
-    
             $score = session('score', 0);
             $playerName = session('player_name', 'Anonymous');
 
-            // Salva il punteggio (nessun controllo se già salvato)
-            HighScore::create([
-                'player_name' => $playerName,
-                'score' => $score
-            ]);
+            // Salva il punteggio se non ancora salvato
+            if (!session('score_saved', false)) {
+                HighScore::create([
+                    'player_name' => $playerName,
+                    'score' => $score
+                ]);
+                session(['score_saved' => true]);
+            }
 
             return view('quiz_end', [
                 'score' => session('score', 0),

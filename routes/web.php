@@ -17,8 +17,9 @@ Route::get('/countries', [CountryController::class, "index"])->name('countries.i
 
 // Resetta la sessione di gioco quando si clicca sul pulsante "Capitals Quiz" sulla Home
 Route::get('/capitals-quiz-start', function () {
-    session()->forget(['score', 'question_count']);
-    return redirect()->route('quiz.show');
+    // Rimuove punteggio e progressi precedenti
+    session()->forget(['score', 'question_count', 'score_saved', 'player_name', 'answers', 'history']);
+    return view('enter_name'); // mostra il form per il nome
 })->name('quiz.start');
 
 // Mostra la domanda del quiz
