@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CapitalQuizController;
+use App\Http\Controllers\FlagQuizController;
 use App\Http\Controllers\CountryController;
 use App\Models\HighScore;
 use Illuminate\Support\Facades\Route;
@@ -12,8 +13,12 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+
+
 // Mostra la vista con tutte le countries
 Route::get('/countries', [CountryController::class, "index"])->name('countries.index');
+
+// QUIZ CAPITALI -----------------------------------------
 
 // Resetta la sessione di gioco quando si clicca sul pulsante "Capitals Quiz" sulla Home
 Route::get('/capitals-quiz-start', function () {
@@ -39,3 +44,29 @@ Route::get('/high-scores', function () {
     $highScores = HighScore::orderByDesc('score')->take(10)->get();
     return view('high_scores', ['highScores' => $highScores]);
 })->name('highscores');
+
+
+// QUIZ FLAGS -----------------------------------------
+
+// Mostra il form per inserire il nome del giocatore
+Route::get('/flagquiz', function () {
+    return view('flag_quiz_start');
+})->name('flagquiz.startForm');
+
+// Invia il nome del giocatore e inizia il quiz
+Route::post('/flag_quiz_start', [FlagQuizController::class, 'start'])->name('flagquiz.start');
+
+// Mostra una domanda
+Route::get('/flagquiz/question', [FlagQuizController::class, 'showQuestion'])->name('flagquiz.show');
+
+// Invia la risposta a una domanda
+Route::post('/flagquiz/answer', [FlagQuizController::class, 'checkAnswer'])->name('flagquiz.check');
+
+// Mostra il risultato finale
+Route::get('/flagquiz/result', [FlagQuizController::class, 'result'])->name('flagquiz.result');
+
+// Per resettare il gioco
+Route::post('/flagquiz/reset', [FlagQuizController::class, 'reset'])->name('flagquiz.reset');
+
+// Mostra gli high scores
+Route::get('/flagquiz/leaderboard', [FlagQuizController::class, 'leaderboard'])->name('flagquiz.leaderboard');

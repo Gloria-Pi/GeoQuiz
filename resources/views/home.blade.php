@@ -11,14 +11,17 @@
         <h2 style="text-align: center;">Geography Games for Everyone</h2>
         <h3 style="text-align: center; font-size: 1.2rem; font-style: italic; margin-bottom: 30px;">Are you ready to learn some juicy juicy geography?</h3>
         
-        <p>Choose your game:</p>
-
+        <h3 style="margin-top:50px">Choose your game:</h3>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
             <a href="{{ route('quiz.start') }}" class="contrast"><button>Capitals Quiz</button></a>
-            <a href="#" class="secondary"><button disabled>Flag Quiz (coming soon)</button></a>
-            <a href="#" class="secondary"><button disabled>Flag Memory (coming soon)</button></a>
+            <a href="{{ route('flagquiz.startForm') }}" class="secondary"><button>Flag Quiz</button></a>
+        </div>
+
+        <h3 style="margin-top:50px;">Check out the previous GeoChampions:</h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="{{ route('highscores') }}"><button>🏆 Capitals </button></a>
             <a href="{{ route('countries.index') }}"><button>View All Countries</button></a>
-            <a href="{{ route('highscores') }}"><button>🏆</button></a>
+            <a href="{{ route('flagquiz.leaderboard') }}"><button>🏆 Flags </button></a>
         </div>
     </main>
 </body>
