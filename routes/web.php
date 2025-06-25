@@ -28,7 +28,7 @@ Route::get('/capitals-quiz-start', function () {
 })->name('quiz.start');
 
 // Mostra la domanda del quiz
-Route::get('/quiz', [CapitalQuizController::class, "showQuestion"])->name("quiz.show");
+Route::get('/quiz', [CapitalQuizController::class, 'showQuestion'])->name('quiz.show');
 
 // Controlla la risposta selezionata
 Route::post('/quiz', [CapitalQuizController::class, 'checkAnswer'])->name('quiz.check');

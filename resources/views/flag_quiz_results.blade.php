@@ -40,9 +40,17 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $entry['country'] }}</td>
                         <td>
-                            <img src="{{ asset('assets/flags/' . $entry['userAnswer'] . '.png') }}"
-                                 alt="Your choice"
-                                 class="flag-img">
+                            @if (is_null($entry['userAnswer']))
+                                <img src="{{ asset('assets/other-imgs/timesup.avif') }}"
+                                    alt="You didn't answer in time"
+                                    class="flag-img">
+
+                            @else
+                                <img src="{{ asset('assets/flags/' . $entry['userAnswer'] . '.png') }}"
+                                    alt="Your choice"
+                                    class="flag-img">
+
+                            @endif
                         </td>
                         <td>
                             <img src="{{ asset('assets/flags/' . $entry['correctCode'] . '.png') }}"
@@ -69,7 +77,7 @@
         <form method="POST" action="{{ route('flagquiz.reset') }}" style="display: inline;">
             @csrf
             <input type="hidden" name="redirect_to" value="{{ route('home') }}">
-            <button type="submit" class="secondary">QUIT</button>
+            <button type="submit" class="secondary">Quit</button>
         </form>
             
         <form method="POST" action="{{ route('flagquiz.reset') }}" style="display: inline;">

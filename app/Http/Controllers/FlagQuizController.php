@@ -84,7 +84,7 @@ class FlagQuizController extends Controller
             $selected = null;
         } elseif ($selected === $correctCode) {
             $isCorrect = true;
-            $score += 10;
+            $score += 1;
         }
 
         $country = Country::where('alpha2Code', $request->input('country_code'))->first();

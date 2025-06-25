@@ -92,7 +92,7 @@
         
         <a href="{{ route('home') }}" >
             <button class="secondary" style="margin-top:30px; font-size: 0.9rem; width: 30%">
-                QUIT</button>
+                Quit</button>
         </a>
             
     </div>

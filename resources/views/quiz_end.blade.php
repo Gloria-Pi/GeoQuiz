@@ -46,11 +46,12 @@
             <button type="submit">Play Again</button>
         </form>
 
-        <a href="{{ route('home') }}">
-            <button class="secondary">QUIT</button>
+        <a href="{{ route('home') }}" >
+            <button class="secondary" style="margin: 10px 0; width: 100%;">Quit</button>
         </a>
-        <a href="{{ route('highscores') }}">
-            <button class="secondary">View Leaderboard</button>
+        
+        <a href="{{ route('highscores') }}" >
+            <button class="secondary" style="margin: 10px 0; width: 100%;">View Leaderboard</button>
         </a>
     </div>
 </body>

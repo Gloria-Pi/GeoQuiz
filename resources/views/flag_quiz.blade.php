@@ -100,7 +100,7 @@
         @endif
 
         <a href="{{ route('home') }}">
-            <button class="secondary" style="margin-top:30px;">QUIT</button>
+            <button class="secondary" style="margin-top:30px;">Quit</button>
         </a>
     </div>
 
