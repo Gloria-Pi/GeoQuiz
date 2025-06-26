@@ -19,8 +19,8 @@
 
         <h3 style="margin-top:50px">Want to practice?</h3>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="{{ route('quiz.training') }}" class="contrast"><button>Capitals Quiz: Training</button></a>
-            <a href="{{ route('flagquiz.training') }}" class="contrast"><button>Flag Quiz: Training</button></a>
+            <a href="{{ route('quiz.training') }}" class="contrast"><button>&#129355; Capitals Quiz</button></a>
+            <a href="{{ route('flagquiz.training') }}" class="contrast"><button>&#129355; Flag Quiz</button></a>
         </div>
 
         <h3 style="margin-top:50px;">Check out the previous GeoChampions:</h3>
@@ -28,6 +28,11 @@
             <a href="{{ route('highscores') }}"><button>🏆 Capitals </button></a>
             <a href="{{ route('countries.index') }}"><button>View All Countries</button></a>
             <a href="{{ route('flagquiz.leaderboard') }}"><button>🏆 Flags </button></a>
+        </div>
+
+        <h3 style="margin-top:50px;">Take a look at our newest Mini-Games!</h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="{{ route('memory.show') }}"><button>&#129513; Memory</button></a>
         </div>
     </main>
 </body>

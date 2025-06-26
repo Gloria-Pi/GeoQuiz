@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CapitalQuizController;
 use App\Http\Controllers\FlagQuizController;
-use App\Http\Controllers\CountryController;
+use App\Http\Controllers\MemoryGameController;
 use App\Models\HighScore;
 use Illuminate\Support\Facades\Route;
 
@@ -82,3 +83,6 @@ Route::get('/capitals-training', [CapitalQuizController::class, 'training'])->na
 
 // Mostra il training per il quiz sulle bandiere
 Route::get('/flagquiz/training', [FlagQuizController::class, 'training'])->name('flagquiz.training');
+
+// MEMORY SECTION -----------------------------------------
+Route::get('/memory', [MemoryGameController::class, 'show'])->name('memory.show');
