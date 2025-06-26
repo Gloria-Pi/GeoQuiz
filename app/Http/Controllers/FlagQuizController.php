@@ -47,7 +47,7 @@ class FlagQuizController extends Controller
         shuffle($options);
 
         // DA TESTARE
-        // Mapping opzioni → alpha2Code
+        // Mapping opzioni -> alpha2Code
         $optionFlags = Country::whereIn('alpha2Code', $options)
             ->pluck('alpha2Code', 'alpha2Code')
             ->map(fn($alpha2) => strtolower($alpha2))
@@ -210,4 +210,15 @@ class FlagQuizController extends Controller
 
         return view('flag_leaderboard', ['topScores' => $topScores]);
     }
+
+
+    public function training()
+    {
+        $country = Country::inRandomOrder()->first();
+    
+        return view('flag_quiz_training', compact('country'));
+    }
+
+
+
 }

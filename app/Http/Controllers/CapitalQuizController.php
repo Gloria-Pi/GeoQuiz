@@ -129,6 +129,16 @@ class CapitalQuizController extends Controller
         ]);
     }
 
+
+    public function training()
+    {
+        $country = Country::inRandomOrder()->first();
+    
+        return view('quiz_training', [
+            'country' => $country
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      */

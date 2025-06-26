@@ -18,6 +18,8 @@ Route::get('/', function () {
 // Mostra la vista con tutte le countries
 Route::get('/countries', [CountryController::class, "index"])->name('countries.index');
 
+
+
 // QUIZ CAPITALI -----------------------------------------
 
 // Resetta la sessione di gioco quando si clicca sul pulsante "Capitals Quiz" sulla Home
@@ -70,3 +72,13 @@ Route::post('/flagquiz/reset', [FlagQuizController::class, 'reset'])->name('flag
 
 // Mostra gli high scores
 Route::get('/flagquiz/leaderboard', [FlagQuizController::class, 'leaderboard'])->name('flagquiz.leaderboard');
+
+
+
+// TRAINING SECTION -----------------------------------------
+
+// Mostra il training per il quiz sulle capitali
+Route::get('/capitals-training', [CapitalQuizController::class, 'training'])->name('quiz.training');
+
+// Mostra il training per il quiz sulle bandiere
+Route::get('/flagquiz/training', [FlagQuizController::class, 'training'])->name('flagquiz.training');

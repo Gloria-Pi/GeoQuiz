@@ -17,6 +17,12 @@
             <a href="{{ route('flagquiz.startForm') }}" class="secondary"><button>Flag Quiz</button></a>
         </div>
 
+        <h3 style="margin-top:50px">Want to practice?</h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="{{ route('quiz.training') }}" class="contrast"><button>Capitals Quiz: Training</button></a>
+            <a href="{{ route('flagquiz.training') }}" class="contrast"><button>Flag Quiz: Training</button></a>
+        </div>
+
         <h3 style="margin-top:50px;">Check out the previous GeoChampions:</h3>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
             <a href="{{ route('highscores') }}"><button>🏆 Capitals </button></a>
