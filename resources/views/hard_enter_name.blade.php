@@ -7,10 +7,10 @@
 </head>
 <body>
     <main class="container">
-        <h1 style="margin: 30px 0;">Welcome to the Capitals Quiz! Normie Mode Ver.</h1>
+        <h1 style="margin: 30px 0;">Welcome to the Capitals Quiz! Hard Mode Ver.</h1>
         <h2 style="margin-bottom: 50px;">Enter your name to begin the quiz</h2>
 
-        <form action="{{ route('quiz.show') }}" method="GET">
+        <form action="{{ route('hard-quiz.show') }}" method="GET">
             <label for="player_name">Your name:</label>
             <input type="text" id="player_name" name="player_name" required>
 

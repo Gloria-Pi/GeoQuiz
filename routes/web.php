@@ -5,6 +5,7 @@ use App\Http\Controllers\CapitalQuizController;
 use App\Http\Controllers\FlagQuizController;
 use App\Http\Controllers\MemoryGameController;
 use App\Models\HighScore;
+use App\Models\HardScore;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,7 +28,11 @@ Route::get('/countries', [CountryController::class, "index"])->name('countries.i
 Route::get('/capitals-quiz-start', function () {
     // Rimuove punteggio e progressi precedenti
     session()->forget(['score', 'question_count', 'score_saved', 'player_name', 'answers', 'history']);
-    return view('enter_name'); // mostra il form per il nome
+    return view('pick_difficulty'); // fa scegliere la difficoltà
+})->name('quiz.pick');
+
+Route::get('/capitals-quiz-start-normalmode', function () {
+    return view('enter_name'); // form del nome
 })->name('quiz.start');
 
 // Mostra la domanda del quiz
@@ -47,6 +52,32 @@ Route::get('/high-scores', function () {
     $highScores = HighScore::orderByDesc('score')->take(10)->get();
     return view('high_scores', ['highScores' => $highScores]);
 })->name('highscores');
+
+
+// QUIZ CAPITALI HARD MODE -----------------------------------------
+
+// form del nome
+Route::get('/capitals-quiz-start-hardmode', function () {
+    return view('hard_enter_name');
+})->name('hard-quiz.start');
+
+// Mostra la domanda del quiz
+Route::get('/hard-quiz', [CapitalQuizController::class, 'showHardQuestion'])->name('hard-quiz.show');
+
+// Controlla la risposta selezionata
+Route::post('/hard-quiz', [CapitalQuizController::class, 'checkHardAnswer'])->name('hard-quiz.check');
+
+// Per resettare il gioco
+Route::post('/hard-quiz/reset', function () {
+    session()->forget(['score', 'question_count']);
+    return redirect()->route('hard-quiz.show');
+})->name('hard-quiz.reset');
+
+// Mostra gli high scores
+Route::get('/hard-scores', function () {
+    $hardScores = HardScore::orderByDesc('score')->take(10)->get();
+    return view('hard_scores', ['hardScores' => $hardScores]);
+})->name('hardscores');
 
 
 // QUIZ FLAGS -----------------------------------------

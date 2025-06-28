@@ -30,8 +30,8 @@
     <div class="container" style="margin-top: 30px;">
 
     <h1>High Scores</h1>
-    <h3>Normal Mode</h3>
-    <table style="margin-top: 30px;">
+    <h3>Hard Mode</h3>
+    <table>
         <thead>
             <tr>
                 <th>#</th>
@@ -40,7 +40,7 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($highScores as $index => $score)
+            @forelse ($hardScores as $index => $score)
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $score->player_name }}</td>
@@ -53,11 +53,11 @@
             @endforelse
         </tbody>
     </table>
-    
+
     <div class="container" style="margin-top: 30px; display:flex; flex-direction:column; gap: 20px; align-items:center;">
     
-        <a href="{{ route('hardscores') }}">
-            <button>View Hard Mode Scores</button>
+        <a href="{{ route('highscores') }}">
+            <button>View Normal Mode Scores</button>
         </a>
     
         <a href="{{ route('home') }}">
@@ -65,6 +65,5 @@
         </a>
     </div>
 </div>
-
 </body>
 </html>
