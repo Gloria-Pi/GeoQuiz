@@ -29,7 +29,7 @@
                 <button style="width:15vw">Next</button>
             </a>
 
-            <a href="{{ route('quiz.start') }}">
+            <a href="{{ route('quiz.pick') }}">
                 <button style="width:15vw" class="secondary">Start Quiz</button>
             </a>
         </div>

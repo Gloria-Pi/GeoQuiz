@@ -32,8 +32,7 @@
     <div class="container">
 
         <h1>Flag Quiz High Scores</h1>
-        <h2>Normal Mode Ver.</h2>
-
+        <h2>Hard Mode Ver.</h2>
         <table>
             <thead>
                 <tr>
@@ -59,8 +58,8 @@
 
         <div class="container" style="margin-top: 30px; display:flex; flex-direction:column; gap: 20px; align-items:center;">
         
-            <a href="{{ route('flhard.leaderboard') }}">
-                <button>View Hard Mode Scores</button>
+            <a href="{{ route('flagquiz.leaderboard') }}">
+                <button>View Normal Mode Scores</button>
             </a>
         
             <a href="{{ route('home') }}">

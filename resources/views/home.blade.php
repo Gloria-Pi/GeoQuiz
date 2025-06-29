@@ -14,7 +14,7 @@
         <h3 style="margin-top:50px">Choose your game:</h3>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
             <a href="{{ route('quiz.pick') }}" class="contrast"><button>Capitals Quiz</button></a>
-            <a href="{{ route('flagquiz.startForm') }}" class="secondary"><button>Flag Quiz</button></a>
+            <a href="{{ route('flag-quiz.pick') }}" class="secondary"><button>Flag Quiz</button></a>
         </div>
 
         <h3 style="margin-top:50px">Want to practice?</h3>

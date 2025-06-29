@@ -39,7 +39,7 @@
                 <button type="submit" style="width:20vw;">Next</button>
             </form>
 
-            <a href="{{ route('flagquiz.startForm') }}">
+            <a href="{{ route('flag-quiz.pick') }}">
                 <button class="secondary">Quiz</button>
             </a>
         </div>

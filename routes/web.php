@@ -3,9 +3,11 @@
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CapitalQuizController;
 use App\Http\Controllers\FlagQuizController;
+use App\Http\Controllers\FlhardController;
 use App\Http\Controllers\MemoryGameController;
 use App\Models\HighScore;
 use App\Models\HardScore;
+use App\Models\FlagHardScore;
 use Illuminate\Support\Facades\Route;
 
 
@@ -84,6 +86,10 @@ Route::get('/hard-scores', function () {
 
 // Mostra il form per inserire il nome del giocatore
 Route::get('/flagquiz', function () {
+    return view('flag_pick_difficulty'); // fa scegliere la difficoltà
+})->name('flag-quiz.pick');
+
+Route::get('/flag-quiz-start-normalmode', function () {
     return view('flag_quiz_start');
 })->name('flagquiz.startForm');
 
@@ -105,6 +111,31 @@ Route::post('/flagquiz/reset', [FlagQuizController::class, 'reset'])->name('flag
 // Mostra gli high scores
 Route::get('/flagquiz/leaderboard', [FlagQuizController::class, 'leaderboard'])->name('flagquiz.leaderboard');
 
+
+// QUIZ FLAGS HARD MODE -----------------------------------------
+
+// Mostra il form per inserire il nome del giocatore
+Route::get('/flhard', function () {
+    return view('flhard_start');
+})->name('flhard.startForm');
+
+// Invia il nome del giocatore e inizia il quiz
+Route::post('/flhard_start', [FlhardController::class, 'start'])->name('flhard.start');
+
+// Mostra una domanda
+Route::get('/flhard/question', [FlhardController::class, 'showQuestion'])->name('flhard.show');
+
+// Invia la risposta a una domanda
+Route::post('/flhard/answer', [FlhardController::class, 'checkAnswer'])->name('flhard.check');
+
+// Mostra il risultato finale
+Route::get('/flhard/result', [FlhardController::class, 'result'])->name('flhard.result');
+
+// Per resettare il gioco
+Route::post('/flhard/reset', [FlhardController::class, 'reset'])->name('flhard.reset');
+
+// Mostra gli high scores
+Route::get('/flhard/leaderboard', [FlhardController::class, 'leaderboard'])->name('flhard.leaderboard');
 
 
 // TRAINING SECTION -----------------------------------------
