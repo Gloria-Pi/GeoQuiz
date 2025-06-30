@@ -35,5 +35,9 @@
             <a href="{{ route('memory.show') }}"><button>&#129513; Memory</button></a>
         </div>
     </main>
+
+    <footer class="container">
+        <p style="font-size: 14px; margin-top: 50px; display:flex; justify-content:end; align-items:end;">Made by the shared efforts of Luca Montanaro (until June 19) and Gloria Paita</p>
+    </footer>
 </body>
 </html>
